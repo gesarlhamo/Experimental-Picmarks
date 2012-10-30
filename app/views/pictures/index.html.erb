@@ -1,21 +1,28 @@
+<style>
+	body{
+		background color: <% @color %>;
+	}
+</style>
+
+<%= link_to "Delete All", delete_all_url, :method => "delete", :confirm => "Are You Sure?" %>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/9bZkp7q19f0" frameborder="0" allowfullscreen></iframe>
+
 <%= link_to "Add a New Picture", new_picture_path %>
+	<p>Lucid Living</p>
+ <ul>
+ 	
+<% @pictures.each do |p| %>
+	
+  <li>	  	
+ 	
+	
+	<%= link_to image_tag(p.url, :width => 800), picture_path(p.id) %>
+		<p><%= p.title %><p>
+	
+	</li>
 
-<p>
-  <%= notice %>
-</p>
+ <% end %>
+	
+ </ul>
 
-<ul>
-<% @pictures.each do |picture| %>
-  <li>
-    <%= link_to image_tag(picture.url, :width => 60), picture_path(picture.id) %>
-    <p><%= picture.title %><p>
-    <nav>
-      <%= link_to 'Details', picture_url(picture.id) %>
-      |
-      <%= link_to 'Edit', edit_picture_url(picture.id)  %>
-      |
-      <%= link_to 'Delete', picture_url(picture.id), :method => 'delete', :confirm => 'Whoa, are you sure?'  %>
-    </nav>
-  </li>
-<% end %>
-</ul>

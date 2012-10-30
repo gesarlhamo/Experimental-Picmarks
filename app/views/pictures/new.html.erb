@@ -1,23 +1,15 @@
-<h2>Add A New Picture</h2>
+<%= form_tag pictures_url, :method => "post" do %>
 
-<%= render 'form' %>
+   <%= label_tag :url, "URL:" %>
+   <%= text_field_tag :url %>
 
-<!-- 
+   <%= label_tag :title, "Title:" %>
+   <%= text_field_tag :title %>
 
-# If it were my job to write the Rails form_for view helper method, I would start by:
+   <%= submit_tag "Add Picture!"%>
 
-def form_for(model_instance)
-  class = model_instance.class
-  url = class.downcase.pluralize
-  if model_instance.id.present?
-    verb = "put"
-    submit_value = "Update #{class}"
-  else
-    verb = "post"
-    submit_value = "Create #{class}"
-  end
-  
-  return "<form action="/#{url}" method="#{verb}">"
-end
-
--->
+   <%= label_tag :note, "Note:" %>
+   <%= text_field_tag :note %>
+   
+<%= link_to "or Cancel", pictures_url %>
+ <% end %>
